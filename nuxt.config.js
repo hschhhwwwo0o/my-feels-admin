@@ -13,10 +13,10 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
-  css: [],
-  plugins: ['@/plugins/feathers.js'],
+  css: ['ant-design-vue/dist/antd.css'],
+  plugins: ['@/plugins/antd-ui', '@/plugins/feathers.js'],
   components: true,
-  buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/tailwindcss'],
+  buildModules: ['@nuxtjs/tailwindcss', '@nuxtjs/eslint-module'],
   modules: [],
   build: {},
 }
