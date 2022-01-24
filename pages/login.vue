@@ -77,10 +77,7 @@ export default {
         })
 
         if (data.user.email === 'my-feels@admin.com') {
-          this.$message.success(
-            'You are successfully logged in as an admin',
-            1200
-          )
+          this.$message.success('You are successfully logged in as an admin', 2)
         } else {
           this.localStorage.setitem('feathers-jwt', '')
         }

@@ -8,7 +8,7 @@
           <a-breadcrumb-item> Users </a-breadcrumb-item>
         </a-breadcrumb>
       </a-layout-header>
-      <a-layout-content class="mx-6 my-6 p-6 bg-white">
+      <a-layout-content class="mx-6 mt-6 p-6 bg-white">
         <a-page-header title="Users" sub-title="All active users">
           <a-row type="flex">
             <div class="flex flex-col gap-3 mt-5 lg:flex-row lg:gap-8 lg:mt-3">
@@ -27,6 +27,7 @@
             :data-source="usersData"
             :pagination="paginationUsersTable"
             :loading="isLoadingUsersTable"
+            :scroll="{ x: 500 }"
             @change="fetchUsers"
           >
           </a-table>
@@ -35,6 +36,7 @@
     </a-layout>
   </a-layout>
 </template>
+
 <script>
 import moment from 'moment'
 
@@ -139,6 +141,7 @@ export default {
   },
 }
 </script>
+
 <style>
 #components-layout-demo-custom-trigger .trigger {
   font-size: 18px;
@@ -153,6 +156,6 @@ export default {
 }
 
 .ant-layout {
-  height: 100vh;
+  min-height: 100vh;
 }
 </style>

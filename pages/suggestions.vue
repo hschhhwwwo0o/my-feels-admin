@@ -16,7 +16,10 @@
                 <a-statistic title="Total users" value="0" />
               </div>
               <div>
-                <a-statistic title="Last activity" value="Empty" />
+                <a-statistic
+                  title="Last activity"
+                  value="Suggestions were not created"
+                />
               </div>
             </div>
           </a-row>
@@ -44,11 +47,13 @@
     </a-layout>
   </a-layout>
 </template>
+
 <script>
 export default {
   name: 'SuggestionsPage',
 }
 </script>
+
 <style>
 #components-layout-demo-custom-trigger .trigger {
   font-size: 18px;
@@ -63,6 +68,6 @@ export default {
 }
 
 .ant-layout {
-  height: 100vh;
+  min-height: 100vh;
 }
 </style>

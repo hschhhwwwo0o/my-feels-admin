@@ -21,51 +21,62 @@
               <div>
                 <a-statistic title="Negative feedbacks" value="0" />
               </div>
+              <div>
+                <a-statistic
+                  title="The last one was created"
+                  :value="lastActivity"
+                />
+              </div>
             </div>
           </a-row>
         </a-page-header>
         <div class="mt-8">
-          <a-table :columns="columns" :data-source="[]"> </a-table>
+          <a-table
+            :columns="columns"
+            :data-source="feedbacksData"
+            :pagination="paginationFeedbacksTable"
+            :loading="isLoadingFeedbacksTable"
+            :scroll="{ x: 200 }"
+            @change="fetchFeedbacks"
+          >
+          </a-table>
         </div>
       </a-layout-content>
     </a-layout>
   </a-layout>
 </template>
+
 <script>
+import moment from 'moment'
+
 export default {
   name: 'FeedbacksPage',
+
   data() {
     return {
       collapsed: false,
+      lastActivity: '',
+      feedbacksData: [],
+      paginationFeedbacksTable: {},
+      isLoadingFeedbacksTable: true,
+      totalFeedbacks: 0,
       columns: [
         {
           title: 'First Name',
-          dataIndex: 'name',
-          key: 'name',
+          dataIndex: 'firstName',
+          key: 'firstName',
           width: 200,
         },
         {
           title: 'Last Name',
-          dataIndex: 'age',
-          key: 'age',
+          dataIndex: 'lastName',
+          key: 'lastName',
           width: 200,
         },
         {
           title: 'E-mail',
           dataIndex: 'email',
           key: 'email',
-          width: 200,
-        },
-        {
-          title: 'Theme',
-          dataIndex: 'theme',
-          key: 'theme',
-          width: 200,
-        },
-        {
-          title: 'User created at',
-          dataIndex: 'userCreatedAt',
-          key: 'userCreatedAt',
           width: 200,
         },
         {
@@ -76,15 +87,53 @@ export default {
         },
         {
           title: 'Feedback created at',
-          dataIndex: 'feedbackCreatedAt',
-          key: 'feedbackCreatedAt',
+          dataIndex: 'createdAt',
+          key: 'createdAt',
           width: 200,
         },
       ],
     }
   },
+
+  filters: {
+    toDateFormat(val) {
+      return moment(val).format('DD.MM.YYYY')
+    },
+    toLastActivityFormat(val) {
+      return moment(val).startOf('day').fromNow()
+    },
+  },
+
+  mounted() {
+    this.fetchFeedbacks()
+  },
+
+  methods: {
+    async fetchFeedbacks(pagination) {
+      const responseFeedbacks = await this.$feathersClient
+        .service('feedbacks')
+        .find({
+          query: {
+            $sort: {
+              createdAt: -1,
+            },
+            $skip: pagination ? (pagination.current - 1) * 10 : 0,
+          },
+        })
+      this.feedbacksData = responseFeedbacks.data.map((feedback) => {
+        return {
+          ...feedback,
+        }
+      })
+      this.lastActivity = responseFeedbacks.data.length
+        ? this.$options.filters.toDateFormat(responseFeedbacks.data[0].cretedAt)
+        : 'Feedbacks were not created'
+      this.isLoadingFeedbacksTable = false
+    },
+  },
 }
 </script>
+
 <style>
 #components-layout-demo-custom-trigger .trigger {
   font-size: 18px;
@@ -99,6 +148,6 @@ export default {
 }
 
 .ant-layout {
-  height: 100vh;
+  min-height: 100vh;
 }
 </style>
