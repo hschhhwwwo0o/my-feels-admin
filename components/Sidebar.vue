@@ -19,7 +19,7 @@
           <nuxt-link to="/">
             <div class="flex flex-row gap-2">
               <div>
-                <span class="mt-1">Users</span>
+                <span class="mt-1 text-gray-800">Users</span>
               </div>
             </div>
           </nuxt-link>
@@ -28,7 +28,7 @@
           <nuxt-link to="/feedbacks">
             <div class="flex flex-row gap-2">
               <div>
-                <span class="mt-1">Feedback</span>
+                <span class="mt-1 text-gray-800">Feedback</span>
               </div>
             </div>
           </nuxt-link>
@@ -37,7 +37,7 @@
           <nuxt-link to="/suggestions">
             <div class="flex flex-row gap-2">
               <div>
-                <span class="mt-1">Suggestions</span>
+                <span class="mt-1 text-gray-800">Suggestions</span>
               </div>
             </div>
           </nuxt-link>
