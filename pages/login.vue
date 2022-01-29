@@ -20,7 +20,7 @@
             <nuxt-link to="/login">
               <div class="flex flex-row gap-2">
                 <div>
-                  <span class="mt-1 text-gray-800">Login</span>
+                  <span class="mt-1 text-gray-800">Log In</span>
                 </div>
               </div>
             </nuxt-link>
@@ -31,8 +31,11 @@
         <div class="">
           <main class="flex items-center bg-white flex-col w-full h-screen">
             <div class="mt-10 flex flex-col gap-3 w-full px-10 lg:w-96">
-              <div class="mt-28">
-                <h1 class="text-3xl text-center font-medium">Login</h1>
+              <div class="mt-28 pb-5">
+                <img src="~/assets/new-logo.png" alt="" />
+              </div>
+              <div class="mt-10">
+                <h1 class="text-2xl text-center font-semibold pb-4">Log In</h1>
               </div>
               <a-input
                 v-model="email"
@@ -44,9 +47,7 @@
                 placeholder="Input password..."
                 size="large"
               />
-              <a-button type="primary" size="large" @click="login">
-                Login
-              </a-button>
+              <a-button size="large" @click="login"> Log In </a-button>
             </div>
           </main>
         </div>
