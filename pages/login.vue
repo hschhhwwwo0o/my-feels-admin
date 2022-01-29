@@ -20,7 +20,7 @@
             <nuxt-link to="/login">
               <div class="flex flex-row gap-2">
                 <div>
-                  <span class="mt-1">Login</span>
+                  <span class="mt-1 text-gray-800">Login</span>
                 </div>
               </div>
             </nuxt-link>
@@ -28,11 +28,11 @@
         </a-menu>
       </a-layout-header>
       <a-layout-content>
-        <div class="p-6">
+        <div class="">
           <main class="flex items-center bg-white flex-col w-full h-screen">
             <div class="mt-10 flex flex-col gap-3 w-full px-10 lg:w-96">
               <div class="mt-28">
-                <h1 class="text-3xl text-center">Login</h1>
+                <h1 class="text-3xl text-center font-medium">Login</h1>
               </div>
               <a-input
                 v-model="email"
@@ -77,7 +77,10 @@ export default {
         })
 
         if (data.user.email === 'my-feels@admin.com') {
-          this.$message.success('You are successfully logged in as an admin', 2)
+          this.$message.success(
+            'You are successfully logged in as an admin',
+            1.5
+          )
         } else {
           this.localStorage.setitem('feathers-jwt', '')
         }
