@@ -1,6 +1,6 @@
 "My feels" Admin panel
 
-<img src="./md/Frame 14.png" alt="" />
+<img src="./md/Frame 3.png" alt="" />
 
 ## Tech Stack
 
