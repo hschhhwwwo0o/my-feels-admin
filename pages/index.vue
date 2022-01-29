@@ -116,9 +116,7 @@ export default {
             $skip: pagination ? (pagination.current - 1) * 10 : 0,
           },
         })
-        this.lastActivityDate = this.$options.filters.toLastActivityFormat(
-          response.data[0].createdAt
-        )
+        this.lastActivityDate = String(new Date(response.data[0].createdAt))
         this.usersData = response.data.map((user) => {
           return {
             ...user,
