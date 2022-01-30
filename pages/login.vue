@@ -47,7 +47,7 @@
                 placeholder="Input password..."
                 size="large"
               />
-              <a-button size="large" @click="login"> Log In </a-button>
+              <a-button size="large" @click="onLoginHandler"> Log In </a-button>
             </div>
           </main>
         </div>
@@ -69,7 +69,7 @@ export default {
   },
 
   methods: {
-    async login() {
+    async onLoginHandler() {
       try {
         const data = await this.$feathersClient.authenticate({
           strategy: 'local',
