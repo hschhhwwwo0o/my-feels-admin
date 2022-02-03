@@ -97,6 +97,7 @@ export default {
     async onLogOutHandler() {
       await feathersClient.logout()
       await this.$router.push('/login')
+      this.$message.success('You have successfully logged out', 1.5)
     },
   },
 }
