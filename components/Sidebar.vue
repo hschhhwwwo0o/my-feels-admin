@@ -42,6 +42,13 @@
             </div>
           </nuxt-link>
         </a-menu-item>
+        <a-menu-item key="/logout" @click="onLogOutHandler">
+          <div class="flex flex-row gap-2">
+            <div>
+              <span class="mt-1 text-gray-800">Log out</span>
+            </div>
+          </div>
+        </a-menu-item>
       </a-menu>
     </a-layout-header>
   </span>
@@ -62,8 +69,12 @@ export default {
   mounted() {
     feathersClient
       .reAuthenticate()
-      .then(() => {
-        this.initRouting()
+      .then((data) => {
+        if (data.user.email === 'my-feels@admin.com') {
+          this.initRouting()
+        } else {
+          throw Object.assign(new Error('Error'), { code: 401 })
+        }
       })
       .catch(() => {
         this.$router.push('/login')
@@ -81,6 +92,11 @@ export default {
       if (this.$router.history.current.fullPath === '/suggestions') {
         this.routs = ['/suggestions']
       }
+    },
+
+    async onLogOutHandler() {
+      await feathersClient.logout()
+      await this.$router.push('/login')
     },
   },
 }
