@@ -76,7 +76,6 @@ export default {
           email: this.email,
           password: this.password,
         })
-
         if (data.user.email === 'my-feels@admin.com') {
           this.$message.success(
             'You are successfully logged in as an admin',
@@ -85,7 +84,6 @@ export default {
         } else {
           this.localStorage.setitem('feathers-jwt', '')
         }
-
         setTimeout(() => {
           this.$router.push('/')
         }, 1000)
