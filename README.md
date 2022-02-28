@@ -1,6 +1,6 @@
 "My feels" Admin panel
 
-![GitHub Dark](./md/Frame 3.png#gh-light-mode-only)
+![GitHub Dark](./md/Frame3.png#gh-light-mode-only)
 
 ## Tech Stack
 
