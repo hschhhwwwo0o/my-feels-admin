@@ -3,7 +3,7 @@ import feathers from '@feathersjs/feathers'
 import socketio from '@feathersjs/socketio-client'
 import auth from '@feathersjs/authentication-client'
 
-const socket = io('https://my-feels-api.herokuapp.com/')
+const socket = io('https://m-f-api.herokuapp.com/')
 const feathersClient = feathers()
 
 feathersClient.configure(auth())
